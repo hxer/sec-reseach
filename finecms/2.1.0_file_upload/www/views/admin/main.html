@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<link href="{ADMIN_THEME}images/reset.css" rel="stylesheet" type="text/css" />
+<link href="{ADMIN_THEME}images/system.css" rel="stylesheet" type="text/css" />
+<link href="{ADMIN_THEME}images/dialog.css" rel="stylesheet" type="text/css" />
+<link href="{ADMIN_THEME}images/main.css" rel="stylesheet" type="text/css" />
+<link href="{ADMIN_THEME}images/switchbox.css" rel="stylesheet" type="text/css" />
+<link href="{ADMIN_THEME}luos/css/style.min.css?v=4.1.0" rel="stylesheet"><link href="{ADMIN_THEME}images/table_form.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="{ADMIN_THEME}js/jquery.min.js"></script>
+<script type="text/javascript" src="{ADMIN_THEME}js/dialog.js"></script>
+</head>
+<body>
+<style type="text/css">
+html{ _overflow-y:scroll }
+tr { height:25px;}
+</style>
+<div id="main_frameid" class="pad-10" style="_margin-right:-12px;_width:98.9%;">
+<script type="text/javascript">
+$(function(){
+	$.getScript("{url('admin/index/ajaxcount', array('type'=>'member'))}");
+    $.getScript("{url('admin/index/ajaxcount', array('type'=>'size'))}");
+	$.getScript("http://www.dayrui.com/index.php?c=sys&m=news&t=v1");
+	$.getScript("http://www.dayrui.com/index.php?c=v1&m=version&id={CMS_VERSION}");
+	$.getScript("{url('admin/index/ajaxcount', array('type'=>'install'))}");
+	if ($.browser.msie && parseInt($.browser.version) < 7) $('#browserVersionAlert').show();
+}); 
+</script>
+<div class="explain-col mb10" style="display:none" id="browserVersionAlert">{lang('a-ie')}</div>
+<div class="col-2 lf mr10" style="width:48%">
+	<h6>{lang('a-ind-0')}</h6>
+	<div class="content" style="height:170px;">
+	{lang('a-com-15')}，{$userinfo['username']}&nbsp;{if $userinfo['realname']}({$userinfo['realname']}){/if} ，{lang('a-ind-1')}：{$userinfo['rolename']} <br />
+	{lang('a-ind-2')}：{date(TIME_FORMAT, $userinfo['lastlogintime'])} ，{lang('a-ind-3')}：<a href="http://www.baidu.com/baidu?wd={$userinfo['lastloginip']}" target=_blank>{$userinfo['lastloginip']}</a><br />
+    {lang('a-ind-4')}：{date(TIME_FORMAT, $userinfo['logintime'])} ，{lang('a-ind-5')}：<a href="http://www.baidu.com/baidu?wd={$userinfo['loginip']}" target=_blank>{$userinfo['loginip']}</a>
+	<div class="bk20 hr"><hr></div>
+	<table width="96%" style="margin-top:18px;">
+	<tbody>
+	<tr>
+		<td width="25%" align="center"><a href="{url('admin/site/config')}"><img width="40" height="40" src="{ADMIN_THEME}images/m3.png"></a></td>
+		<td width="25%" align="center"><a href="{url('admin/member/')}"><img width="40" height="40" src="{ADMIN_THEME}images/m1.png"></a></td>
+		<td width="25%" align="center"><a href="{url('admin/category')}"><img width="40" height="40" src="{ADMIN_THEME}images/m2.png"></a></td>
+		<td width="25%" align="center"><a href="{url('admin/plugin/')}"><img width="40" height="40" src="{ADMIN_THEME}images/m4.png"></a></td>
+	</tr>
+	<tr>
+		<td height="33" align="center"><a href="{url('admin/site/config')}">{lang('a-men-12')}</a></td>
+		<td height="33" align="center"><a href="{url('admin/member/')}">{lang('a-men-5')}</a></td>
+		<td height="33" align="center"><a href="{url('admin/category')}">{lang('a-men-26')}</a></td>
+		<td height="33" align="center"><a href="{url('admin/plugin/')}">{lang('a-men-7')}</a></td>
+	</tr>
+	</tbody>
+	</table>
+	</div>
+</div>
+<div class="col-2 col-auto">
+	<h6>{lang('a-ind-6')}</h6>
+	<div class="content" style="height:170px;">
+
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td colspan="2">{lang('a-ind-10')}：&nbsp;{CMS_NAME}&nbsp;{CMS_VERSION} <span id="finecms_version"></span></td>
+            </tr>
+            <tr>
+                <td colspan="2">{lang('a-ind-11')}：&nbsp;{PHP_OS} 、 PHP{PHP_VERSION} 、{strcut($_SERVER['SERVER_SOFTWARE'], 20)}</td>
+            </tr>
+            </table>
+        <div class="bk20 hr"><hr></div>
+        <table border="0">
+            <tr>
+                <td width="60">
+                    <img src="http://www.dayrui.com/assets/wx.png" width="55" height="55">
+                </td>
+                <td>
+                    <p>用微信扫描二维码，关注“天睿云计算” </p>
+                    <p>获取FineCMS最新研发动态，每日免费送短信！ </p>
+                </td>
+            </tr>
+        </table>
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+    <td colspan="2">
+        <p style="line-height:25px"><a href="http://cloud.dayrui.com" target="_blank" style="color:blue">FineCMS专用虚拟主机优惠活动开始啦，官网注册会员可享有：</a></p>
+        <p style="line-height:20px"><a href="http://cloud.dayrui.com/services/webhosting/linux_host.asp" target="_blank" style="color:blue">专用国内虚拟主机最低99元/年</a>
+            &nbsp;&nbsp;
+        <a href="http://cloud.dayrui.com/services/webhosting/linux_host.asp" target="_blank" style="color:blue">专用香港免备案主机最低94元/年</a></p>
+    </td>
+    </tr>
+	</table>
+	</div>
+</div>
+<div class="bk10"></div>
+<div class="col-2 lf mr10" style="width:48%">
+    <h6>{lang('a-ind-16')}</h6>
+	<div class="content">
+	    <table width="540" border="0" cellpadding="0" cellspacing="0">
+		  <tr>
+			<td width="261">{lang('a-ind-17')}：&nbsp;<a href="{url('admin/member/')}"><span id="member_1" class="label label-success"><img src="{ADMIN_THEME}images/onLoad.gif"></span></a></td>
+			<td width="279">{lang('a-ind-18')}：&nbsp;<a href="{url('admin/member/', array('status'=>2))}"><span id="member_2" class="label label-important"><img src="{ADMIN_THEME}images/onLoad.gif"></span></a></td>
+		  </tr>
+		</table>
+	    <div class="bk20 hr"><hr></div>
+		<table width="540" border="0" cellpadding="0" cellspacing="0">
+		{loop $model $t}
+		  <tr>
+			<td width="261">{$t['modelname']}：&nbsp;<a href="{url('admin/content/', array('modelid'=>$t['modelid']))}"><span id="m_{$t['modelid']}_1" class="label label-success"><img src="{ADMIN_THEME}images/onLoad.gif"></span></a></td>
+			<td width="279">{lang('a-ind-18')}：&nbsp;<a href="{url('admin/content/verify', array('modelid'=>$t['modelid'], 'status'=>3))}"><span id="m_{$t['modelid']}_2" class="label label-important"><img src="{ADMIN_THEME}images/onLoad.gif"></span></a></td>
+		  </tr>
+		<script type="text/javascript">
+		$(function(){
+		　　$.getScript("{url('admin/index/ajaxcount', array('modelid'=>$t['modelid']))}");
+		}); 
+		</script>
+		{/loop}
+		</table>
+	</div>
+</div>
+<div class="col-2 col-auto">
+	<h6>{lang('a-ind-19')}</h6>
+	<div class="content" id="finecms_news">
+	<img src="{ADMIN_THEME}images/loading.gif">
+	</div>
+</div>
+</div>
+</body>
+</html>

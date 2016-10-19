@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>{$SITE_NAME}{lang('admin')}</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+    <link href="{ADMIN_THEME}luos/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{ADMIN_THEME}luos/css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+    <link href="{ADMIN_THEME}luos/css/animate.min.css" rel="stylesheet">
+    <link href="{ADMIN_THEME}luos/css/style.min.css" rel="stylesheet">
+    <link href="{ADMIN_THEME}luos/css/login.min.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <meta http-equiv="refresh" content="0;ie.html" />
+    <![endif]-->
+    <script>
+        if(window.top!==window.self){window.top.location=window.location};
+    </script>
+    <script type="text/javascript" src="{ADMIN_THEME}js/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $("#user").focus();
+        });
+    </script>
+</head>
+
+<body class="signin">
+<div class="signinpanel">
+    <div class="row">
+        <div class="col-sm-7">
+            <div class="signin-info">
+                <div class="logopanel m-b">
+                    <h1>FineCMS企业网站管理系统</h1>
+                </div>
+                <div class="m-b"></div>
+                <h4>成都天睿信息技术有限公司授权于罗氏工作室研发</h4>
+                <ul class="m-b">
+                    <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 完全免费</li>
+                    <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 彻底开源</li>
+                    <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 无版权纠纷</li>
+                    <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 纯公益CMS产品</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-5">
+            <form method="post" action="">
+                <h4 class="no-margins">后台登录</h4>
+                <input type="text" class="form-control uname" id="user" name="username" placeholder="用户名" />
+                <input type="password" class="form-control pword m-b" name="password" placeholder="密码" />
+                <a href="{SITE_URL}" target="_blank">访问前台</a>
+                <button id="submit" name="submit"  class="btn btn-success btn-block">{lang('a-login')}</button>
+            </form>
+        </div>
+    </div>
+    <div class="signup-footer">
+        <div class="pull-left">
+            &copy; {date('Y')} FineCMS企业网站管理系统
+        </div>
+    </div>
+</div>
+</body>
+
+
+<!-- Mirrored from www.zi-han.net/theme/hplus/login_v2.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Jan 2016 14:19:52 GMT -->
+</html>
