@@ -56,6 +56,28 @@ docker build -t finecms210_file_upload .
 docker run --name finecms210_file_upload -p 8000:80 finecms_file_upload
 ```
 
-visit http://127.0.0.1:8000,  
+visit [http://127.0.0.1:8000/index.php](http://127.0.0.1:8000/index.php)
+
+![](install.png)
+
+![](config.png)
+
+保持如上配置(可更改管理员帐号和密码), 安装。
 
 ## poc
+
+* manual check
+
+visit [http://127.0.0.1:8000/upload.html](http://127.0.0.1:8000/upload.html), then `uplaod 123.phtml` file.
+
+* python
+
+```
+python poc.py
+```
+
+## 防御
+
+* 上传文件类型过滤
+
+* 增强访问控制，禁止为授权访问
