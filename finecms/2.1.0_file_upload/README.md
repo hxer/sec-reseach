@@ -47,6 +47,8 @@ if (stripos($ext, 'php') !== FALSE
     return array('result' => '文件格式被系统禁止');
 ```
 
+仅做了基本过滤，过滤不严。
+
 ## docker env
 
 * manual build 
@@ -64,6 +66,10 @@ visit [http://127.0.0.1:8000/index.php](http://127.0.0.1:8000/index.php)
 
 保持如上配置(可更改管理员帐号和密码), 数据服务器不能是`localhost`, 安装。
 
+* dockerhub
+
+you also fetch the env in dockerhub: `docker pull janes/finecms210_file_upload`, 管理员账户密码等，如上图所示
+
 ## poc
 
 * manual check
@@ -76,8 +82,40 @@ visit [http://127.0.0.1:8000/upload.html](http://127.0.0.1:8000/upload.html), th
 python poc.py
 ```
 
+## apache unsafe config will getshell
+
+apache 解析多种文件后缀为 php 时，可以 getshell, 如： `/etc/apache2/mods-enabled/php5.6.conf`, 上传 `xxx.phtml`, 将作为php解析。
+
+```
+<FilesMatch ".+\.ph(p[3457]?|t|tml)$">
+    SetHandler application/x-httpd-php
+</FilesMatch>
+<FilesMatch ".+\.phps$">
+    SetHandler application/x-httpd-php-source
+    # Deny access to raw php sources by default
+    # To re-enable it's recommended to enable access to the files
+    # only in specific virtual host or directory
+    Require all denied
+</FilesMatch>
+# Deny access to files without filename (e.g. '.php')
+<FilesMatch "^\.ph(p[3457]?|t|tml|ps)$">
+    Require all denied
+</FilesMatch>
+
+# Running PHP scripts in user directories is disabled by default
+# 
+# To re-enable PHP in user directories comment the following lines
+# (from <IfModule ...> to </IfModule>.) Do NOT set it to On as it
+# prevents .htaccess files from disabling it.
+<IfModule mod_userdir.c>
+    <Directory /home/*/public_html>
+        php_admin_flag engine Off
+    </Directory>
+</IfModule>
+```
+
 ## 防御
 
 * 上传文件类型过滤
 
-* 增强访问控制，禁止为授权访问
+* 增强访问控制，禁止未授权访问
