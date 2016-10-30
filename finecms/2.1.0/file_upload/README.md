@@ -114,6 +114,14 @@ apache 解析多种文件后缀为 php 时，可以 getshell, 如： `/etc/apach
 </IfModule>
 ```
 
+在上述docker 容器中，`/etc/apache2/conf.d/php5-module.conf` 文件添加如下行
+
+```
+AddHandler application/x-httpd-php .phtml
+```
+
+重启apache.
+
 ## 防御
 
 * 上传文件类型过滤
