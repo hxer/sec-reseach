@@ -3,6 +3,8 @@
 * [http://legalhackers.com/advisories/MySQL-Maria-Percona-PrivEscRace-CVE-2016-6663-5616-Exploit.html](http://legalhackers.com/advisories/MySQL-Maria-Percona-PrivEscRace-CVE-2016-6663-5616-Exploit.html)
 * [http://bobao.360.cn/learning/detail/3152.html](http://bobao.360.cn/learning/detail/3152.html)
 
+可以将普通用户提权至mysql用户
+
 ## info 
 
 ```
@@ -53,12 +55,13 @@ Percona XtraDB Cluster
 < 5.5.41-37.0
 ```
 
-## detail
+## show
 
 ```
 docker pull janes/ubuntu-lamp
 docker run --name mysql_vuln -it janes/ubuntu-lamp /bin/bash
 
+root@20ccc992c2aa:/# service mysql start
 root@20ccc992c2aa:/# apt install -y gcc libmysqlclient-dev
 root@20ccc992c2aa:/# vim /tmp/poc.c
 ......
@@ -181,3 +184,7 @@ exit
 
 [+] Job done. Exiting
 ```
+
+OR 
+
+`docker pull janes/mysql:cve-2016-6663`
