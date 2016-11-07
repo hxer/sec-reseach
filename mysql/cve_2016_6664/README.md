@@ -112,3 +112,15 @@ root
 OR 
 
 `docker pull janes/mysql:cve-2016-6664`
+
+## detail
+
+`poc.sh` 第19行指出该脚本要求mysql不配置 syslog 选项， 因此 `mv mysqld_safe_syslog.cnf mysqld_safe_syslog.cnf.bak`， 注释该选项
+
+```
+# The exploit requires that file-based logging has been configured (default).
+# To confirm that syslog logging has not been enabled instead use:
+# grep -r syslog /etc/mysql
+# which should return no results.
+```
+
