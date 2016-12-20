@@ -4,6 +4,16 @@
 
 如果能获取到weblogic的`SerializedSystemIni.dat`文件，可以利用工具[WebLogicPasswordDecryptor](https://github.com/NetSPI/WebLogicPasswordDecryptor/)进行解密
 
+## WebLogic 中的"域"
+
+域环境下可以多个 WebLogic Server 或者 WebLogic Server 群集。域是由单个管理 服务器管理的 WebLogic Server 实例的集合。
+
+Weblogic10++域默认是安装完成后由用 户创建。帐号密码也在创建域的时候设置，所以这里并不存在默认密码。当一个域创建完 成后配置文件和 Web 应用在:Weblogic12/user_projects/domains”域名”。而 Weblogic 12c 采用了 AES 对称加密方式，但是 AES 的 key 并不在这文件里面。
+
+默认 的管理密码文件存放于:
+`Weblogic12/user_projects/domains/base_domain/servers/AdminServer/security/boot.properties`(base_domain 是默认的”域名”)
+另外 weblogic 还有/u01/app/oracle 这种目录 `/u01/app/oracle/user_projects/domains/base_domain/servers/AdminServer/security/boot.properties`
+
 ## usage of WebLogicPasswordDecryptor
 
 下面用环境以mac为例，`java jdk 1.8.0_112-b16`, 下载[bcprov-ext-jdk15on-155.jar](http://www.bouncycastle.org/latest_releases.html), 将其移动到，目录`/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home/jre/lib/ext`， 然后修改`/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home/jre/lib/ecurity/java.security`文件，增加一行如下
